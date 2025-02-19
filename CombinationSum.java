@@ -12,23 +12,19 @@ public class CombinationSum {
         if(curr==arr.length){
 
             if(target==0){
-                System.out.println("Value is:"+subseq);
+
                 ans.add(new ArrayList<>(subseq));
             }
             return;
         }
 
-        if(arr[curr]>target){
-            return;
+
+
+        if(arr[curr]<=target) {
+            subseq.add(arr[curr]);
+            combinationSum(curr, target - arr[curr], arr, subseq, ans);
+            subseq.remove(subseq.size() - 1);
         }
-
-        System.out.println("curr value"+curr);
-        subseq.add(arr[curr]);
-        System.out.println(subseq);
-        combinationSum(curr,target-arr[curr],arr,subseq,ans);
-
-        subseq.remove(subseq.size()-1);
-
        // System.out.println(arr[curr]);
         combinationSum(curr+1,target,arr,subseq,ans);
        // System.out.println(arr[curr]);
